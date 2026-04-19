@@ -1,0 +1,41 @@
+<div class="experiment-container">
+    <div class="form-card">
+        <h1 class="form-title">Анкета</h1>
+        
+        <div class="form-description">
+            <p>Пожалуйста, заполните форму ниже.</p>
+        </div>
+
+        <!-- Без прогресс-бара -->
+
+        <div class="form-fields" autocomplete="off">
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="lastName" class="field-label">Фамилия</label>
+                    <input type="text" id="lastName" name="lastName" class="field-input" 
+                           placeholder="Иванов" autocomplete="off" required>
+                </div>
+                <div class="field-group">
+                    <label for="firstName" class="field-label">Имя </label>
+                    <input type="text" id="firstName" name="firstName" class="field-input" 
+                           placeholder="Иван" autocomplete="off" required>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="patronymic" class="field-label">Отчество</label>
+                    <input type="text" id="patronymic" name="patronymic" class="field-input" 
+                           placeholder="(если нет, то -)" autocomplete="off" required>
+                </div>
+                <div class="field-group">
+                    <label for="city" class="field-label">Город</label>
+                    <input type="text" id="city" name="city" class="field-input" 
+                           placeholder="Москва" autocomplete="off" required>
+                </div>
+            </div>
+        </div>
+
+        <button id="submitFormBtn" class="submit-btn" disabled>Далее </button>
+    </div>
+</div>

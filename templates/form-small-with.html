@@ -1,0 +1,49 @@
+<div class="experiment-container">
+    <div class="form-card">
+        <h1 class="form-title">Анкета</h1>
+        
+        <div class="form-description">
+            <p>Пожалуйста, заполните форму ниже.</p>
+        </div>
+
+        <!-- Прогресс-бар -->
+        <div class="progress-wrapper">
+            <div class="progress-text">
+                Заполнено: <span id="filledFields">0</span> / <span id="totalFields">4</span> полей
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="form-fields">
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="lastNameWith" class="field-label">Фамилия</label>
+                    <input type="text" id="lastNameWith" name="lastName" class="field-input" 
+                           placeholder="Иванов" required>
+                </div>
+                <div class="field-group">
+                    <label for="firstNameWith" class="field-label">Имя </label>
+                    <input type="text" id="firstNameWith" name="firstName" class="field-input" 
+                           placeholder="Иван" required>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="patronymicWith" class="field-label">Отчество</label>
+                    <input type="text" id="patronymicWith" name="patronymic" class="field-input" 
+                           placeholder="(если нет, то -)" required>
+                </div>
+                <div class="field-group">
+                    <label for="cityWith" class="field-label">Город </label>
+                    <input type="text" id="cityWith" name="city" class="field-input" 
+                           placeholder="Москва" required>
+                </div>
+            </div>
+        </div>
+
+        <button id="submitFormBtn" class="submit-btn" disabled>Далее</button>
+    </div>
+</div>

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Кинотеатр 1985 — Калибровка взгляда и эмоций</title>
+    <title>Кинотеатр 1985 — Эксперимент</title>
     <link rel="stylesheet" href="cinema_style.css">
+    <link rel="stylesheet" href="style.css">
     <!-- Библиотеки -->
     <script defer src="face-api.min.js"></script>
     <script defer src="webgazer.js"></script>
@@ -12,13 +13,75 @@
 </head>
 <body>
 
-<!-- Интерфейс кинотеатра (изначально скрыт) -->
+<!-- ========== 1. ТВОЯ ГЛАВНАЯ СТРАНИЦА (видна по умолчанию) ========== -->
+<div id="my-main-page" class="my-main-container" style="display: block;">
+    <div class="background" style="background-image: url('images/main.png');"></div>
+    
+    <div class="main-container">
+        <div class="content-card">
+            <h1 class="title">Эксперимент по айтрекингу</h1>
+            
+            <div class="instruction-box">
+                <h2 class="instruction-title">Инструкция</h2>
+                <div class="instruction-text">
+                    <p>Уважаемый участник!</p>
+                    <p>Придумайте персонажа и заполняйте все необходимые поля. Во время заполнения система будет отслеживать движение ваших глаз для анализа удобства интерфейса.</p>
+                    <p><strong>Пожалуйста, следуйте правилам:</strong></p>
+                    <ul>
+                        <li>Старайтесь не двигать головой во время эксперимента</li>
+                        <li>Следуйте указаниям на экране</li>
+                        <li>Весь эксперимент займет около 5-7 минут</li>
+                    </ul>
+                    <p>Ваши данные будут использованы только в исследовательских целях и анонимизированы.</p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="participantId" class="form-label">ID участника <span class="required">*</span></label>
+                <input type="text" id="participantId" class="form-input" placeholder="Например: 12345" autocomplete="off" required>
+                <span class="form-hint" id="idHint">Введите ID, который вам сообщил инструктор</span>
+            </div>
+
+            <div class="question-box">
+                <p class="question-text">Вы готовы приступить к эксперименту?</p>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="ready" value="yes" class="radio-input">
+                        <span class="radio-custom"></span>
+                        <span class="radio-text">Да, я готов(а)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="ready" value="no" class="radio-input">
+                        <span class="radio-custom"></span>
+                        <span class="radio-text">Нет, я не готов(а)</span>
+                    </label>
+                </div>
+            </div>
+            
+            <button id="startBtn" class="btn btn-primary" disabled>Начать эксперимент</button>
+            <div id="statusMessage" style="margin-top: 15px; font-size: 12px; color: #999; text-align: center;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== 2. КАЛИБРОВКА (скрыта по умолчанию) ========== -->
+<div class="calibration-overlay" id="calibrationOverlay" style="display: none;">
+    <div class="calibration-modal">
+        <h2>🎭 Калибровка системы слежения</h2>
+        <p>Для работы кинотеатра с айтрекингом и эмоциями необходимо пройти калибровку.</p>
+        <p><strong>Инструкция:</strong> нажмите «Начать», разрешите доступ к камере и кликайте на появляющиеся красные точки (каждую по 5 раз).</p>
+        <button onclick="startCalibration()" class="calibration-btn" id="calibrationStartBtn">Начать калибровку</button>
+        <div id="calibrationStatus" class="calibration-status"></div>
+    </div>
+</div>
+
+<!-- ========== 3. КИНОТЕАТР (скрыт по умолчанию) ========== -->
 <div id="cinema-app" class="hidden">
     <header>
         <h1>КИНОТЕАТР 1985</h1>
     </header>
 
-    <!-- ГЛАВНАЯ СТРАНИЦА -->
+    <!-- ГЛАВНАЯ СТРАНИЦА КИНОТЕАТРА -->
     <div id="main-page" class="container">
         <h2 class="section-title">Сегодня в прокате</h2>
         <div class="grid">
@@ -66,6 +129,12 @@
         </div>
     </div>
 
+    <div style="text-align: center; margin: 50px 0 30px;">
+        <button id="startSurveyBtn" class="btn" style="background: #4CAF50; width: auto; padding: 12px 30px; font-size: 18px;">
+            📋 Пройти опрос
+        </button>
+    </div>
+
     <!-- СТРАНИЦА ДЕТАЛЕЙ ФИЛЬМА -->
     <div id="movie-detail-page" class="container hidden">
         <div class="movie-info-box">
@@ -100,17 +169,7 @@
     </div>
 </div>
 
-<!-- СИСТЕМА КАЛИБРОВКИ -->
-<div class="calibration-overlay" id="calibrationOverlay">
-    <div class="calibration-modal">
-        <h2>🎭 Калибровка системы слежения</h2>
-        <p>Для работы кинотеатра с айтрекингом и эмоциями необходимо пройти калибровку.</p>
-        <p><strong>Инструкция:</strong> нажмите «Начать», разрешите доступ к камере и кликайте на появляющиеся красные точки (каждую по 5 раз).</p>
-        <button onclick="startCalibration()" class="calibration-btn" id="startBtn">Начать калибровку</button>
-        <div id="calibrationStatus" class="calibration-status"></div>
-    </div>
-</div>
-
+<!-- ========== 4. МОНИТОРЫ (скрыты) ========== -->
 <div class="video-monitor-system" id="videoMonitor" style="display: none;">
     <div class="video-box" id="faceMonitor">
         <div class="label">FaceAPI — Эмоции</div>
@@ -124,6 +183,17 @@
     </div>
 </div>
 
+<!-- ========== 5. КОНТЕЙНЕР ДЛЯ ТВОИХ ФОРМ (скрыт) ========== -->
+<div id="my-forms-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; background: #1a1a2e; overflow-y: auto;"></div>
+
+<!-- ========== 6. СКРИПТЫ ========== -->
+
+<script src="js/form-integration.js"></script>
+<script src="js/gaze-recorder.js"></script>
+<script src="js/form-manager.js"></script>
+<script src="js/main-page-integration.js"></script>
+<script src="js/survey.js"></script>
 <script src="cinema_script.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,140 @@
+<div class="experiment-container">
+    <div class="form-card form-card-large">
+        <h1 class="form-title">Анкета</h1>
+        
+        <div class="form-description">
+            <p>Пожалуйста, заполните форму ниже.</p>
+        </div>
+
+        <!-- Прогресс-бар -->
+        <div class="progress-wrapper">
+            <div class="progress-text">
+                Заполнено: <span id="filledFields">0</span> / <span id="totalFields">16</span> полей
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="form-fields form-fields-large">
+            <!-- Ряд 1 -->
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="lastNameWith" class="field-label">Фамилия</label>
+                    <input type="text" id="lastNameWith" name="lastName" class="field-input" 
+                           placeholder="Иванов" required>
+                </div>
+                <div class="field-group">
+                    <label for="firstNameWith" class="field-label">Имя </label>
+                    <input type="text" id="firstNameWith" name="firstName" class="field-input" 
+                           placeholder="Иван" required>
+                </div>
+                <div class="field-group">
+                    <label for="patronymicWith" class="field-label">Отчество</label>
+                    <input type="text" id="patronymicWith" name="patronymic" class="field-input" 
+                           placeholder="(если нет, то -)" required>
+                </div>
+            </div>
+
+            <!-- Ряд 2 -->
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="genreWith" class="field-label">Жанр фильмов </label>
+                    <select id="genreWith" name="genre" class="field-input" required>
+                        <option value="" disabled selected>Выберите жанр</option>
+                        <option value="cartoon">Мультфильмы</option>
+                        <option value="fantasy">Фантастика</option>
+                        <option value="drama">Драма</option>
+                    </select>
+                </div>
+                <div class="field-group">
+                    <label for="citizenshipWith" class="field-label">Гражданство </label>
+                    <input type="text" id="citizenshipWith" name="citizenship" class="field-input" 
+                           placeholder="Россия" required>
+                </div>
+                <div class="field-group">
+                    <label for="genderWith" class="field-label">Пол </label>
+                    <select id="genderWith" name="gender" class="field-input" required>
+                        <option value="" disabled selected>Выберите</option>
+                        <option value="male">Мужской</option>
+                        <option value="female">Женский</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Ряд 3 -->
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="ageWith" class="field-label">Возраст </label>
+                    <input type="number" id="ageWith" name="age" class="field-input" 
+                           placeholder="25" min="18" max="120" required>
+                </div>
+                <div class="field-group">
+                    <label for="birthPlaceWith" class="field-label">Место рождения </label>
+                    <input type="text" id="birthPlaceWith" name="birthPlace" class="field-input" 
+                           placeholder="г. Москва" required>
+                </div>
+                <div class="field-group">
+                    <label for="cityWith" class="field-label">Город пребывания </label>
+                    <input type="text" id="cityWith" name="city" class="field-input" 
+                           placeholder="Москва" required>
+                </div>
+            </div>
+
+            <!-- Ряд 4 -->
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="positionWith" class="field-label">Должность </label>
+                    <input type="text" id="positionWith" name="position" class="field-input" 
+                           placeholder="Студент" required>
+                </div>
+                <div class="field-group">
+                    <label for="hairColorWith" class="field-label">Цвет волос </label>
+                    <input type="text" id="hairColorWith" name="hairColor" class="field-input" 
+                           placeholder="Русые" required>
+                </div>
+                <div class="field-group">
+                    <label for="raceWith" class="field-label">Раса </label>
+                    <input type="text" id="raceWith" name="race" class="field-input" 
+                           placeholder="Европеоидная" required>
+                </div>
+            </div>
+
+            <!-- Ряд 5 -->
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="eyeColorWith" class="field-label">Цвет глаз </label>
+                    <input type="text" id="eyeColorWith" name="eyeColor" class="field-input" 
+                           placeholder="Карие" required>
+                </div>
+                <div class="field-group">
+                    <label for="bodyTypeWith" class="field-label">Телосложение </label>
+                    <input type="text" id="bodyTypeWith" name="bodyType" class="field-input" 
+                           placeholder="Среднее" required>
+                </div>
+                <div class="field-group">
+                    <label for="featureWith" class="field-label">Особенность </label>
+                    <input type="text" id="featureWith" name="feature" class="field-input" 
+                           placeholder="Родинка на щеке" required>
+                </div>
+            </div>
+
+            <!-- Ряд 6 -->
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="nicknameWith" class="field-label">Псевдоним </label>
+                    <input type="text" id="nicknameWith" name="nickname" class="field-input" 
+                           placeholder="IvanPro" required>
+                </div>
+                <div class="field-group">
+                    <!-- Пусто для выравнивания -->
+                </div>
+                <div class="field-group">
+                    <!-- Пусто для выравнивания -->
+                </div>
+            </div>
+        </div>
+
+        <button id="submitFormBtn" class="submit-btn" disabled>Завершить</button>
+    </div>
+</div>

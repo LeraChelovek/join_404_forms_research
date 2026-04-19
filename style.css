@@ -1,0 +1,816 @@
+/* ========== ОСНОВНЫЕ СТИЛИ ========== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* css/survey.css */
+
+.survey-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 20000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.survey-container {
+    max-width: 700px;
+    width: 100%;
+    background: #1a1a2e;
+    border-radius: 16px;
+    padding: 30px;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.survey-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #00d9ff;
+}
+
+.survey-subtitle {
+    text-align: center;
+    color: #ccc;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.survey-question {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.question-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.question-hint {
+    font-size: 12px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.survey-input {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.survey-input:focus {
+    outline: none;
+    border-color: #00d9ff;
+}
+
+.survey-input.error {
+    border-color: #ff4444;
+}
+
+.rating-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.rating-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.rating-btn.selected {
+    background: #00d9ff;
+    border-color: #00d9ff;
+    color: #000;
+}
+
+.survey-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.survey-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.survey-btn-primary {
+    background: #4caf50;
+    color: white;
+}
+
+.survey-btn-primary:hover {
+    background: #45a049;
+}
+
+.survey-btn-secondary {
+    background: #666;
+    color: white;
+}
+
+.survey-btn-secondary:hover {
+    background: #555;
+}
+
+/* Фоновое изображение */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+/* Затемнение фона для читаемости текста */
+.background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Главный контейнер */
+.main-container {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 942px;
+    height: 420px;
+    z-index: 10;
+}
+
+.content-card {
+    background: white;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* ========== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ФОРМЫ ========== */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s;
+    background: white;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.form-hint {
+    display: block;
+    font-size: 11px;
+    color: #999;
+    margin-top: 4px;
+}
+
+.required {
+    color: #e74c3c;
+}
+
+/* Окошко с инструкцией (без закруглений) */
+.instruction-box {
+    background: #f8f9fa;
+    padding: 25px;
+    margin-bottom: 30px;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+}
+
+.instruction-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.instruction-text {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.instruction-text p {
+    margin-bottom: 10px;
+}
+
+.instruction-text ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.instruction-text li {
+    margin-bottom: 5px;
+}
+
+/* Вопрос с радиокнопками */
+.question-box {
+    margin-bottom: 30px;
+}
+
+.question-text {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    position: relative;
+    padding-left: 28px;
+    user-select: none;
+}
+
+.radio-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.radio-custom {
+    position: absolute;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: white;
+    border: 2px solid #667eea;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.radio-custom::after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #667eea;
+}
+
+.radio-input:checked ~ .radio-custom::after {
+    display: block;
+}
+
+.radio-label:hover .radio-custom {
+    background-color: #f0f0f0;
+}
+
+.radio-text {
+    margin-left: 8px;
+}
+
+/* Кнопка */
+.btn {
+    width: 100%;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:not(:disabled):hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Сообщение об отказе */
+.decline-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px 40px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid #e0e0e0;
+}
+
+.decline-message p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.decline-message button {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background: #667eea;
+    color: white;
+    border: none;
+}
+
+/* Адаптивность */
+@media (max-width: 640px) {
+    .main-container {
+        width: 95%;
+    }
+    
+    .content-card {
+        padding: 25px;
+    }
+    
+    .title {
+        font-size: 22px;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .instruction-box {
+        padding: 15px;
+    }
+}
+
+/* ========== ПРОГРЕСС-БАР ========== */
+
+.progress-wrapper {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.progress-bar-container {
+    background: #e0e0e0;
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    width: 0%;
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+/* ========== КАЛИБРОВКА 3×3 ========== */
+
+.calibration-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 100;
+}
+
+/* Сетка 3×3 для 9 точек */
+.calibration-grid-9 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    height: 100%;
+    padding: 80px;
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+.calibration-point {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: auto;
+    transition: background 0.1s;
+}
+
+/* 3 цвета для 3 кликов */
+.calibration-point[data-state="0"] { background: #e74c3c; }  /* 0/3 */
+.calibration-point[data-state="1"] { background: #e67e22; }  /* 1/3 */
+.calibration-point[data-state="2"] { background: #f1c40f; }  /* 2/3 */
+.calibration-point[data-state="3"] { background: #2ecc71; cursor: default; opacity: 0.6; }  /* 3/3 */
+
+.calibration-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 200;
+}
+
+.calib-btn {
+    padding: 5px 12px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #ddd;
+}
+
+.calib-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.status {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 200;
+}
+
+/* ========== СТИЛИ ДЛЯ ЭКСПЕРИМЕНТАЛЬНЫХ ФОРМ ========== */
+
+/* Контейнер для формы (центрирование) */
+.experiment-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+/* Карточка формы */
+.form-card {
+    width: 700px;
+    max-width: 90%;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+/* Заголовок формы */
+.form-title {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Описание формы */
+.form-description {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Поля формы */
+.form-fields {
+    margin-bottom: 25px;
+}
+
+.field-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.field-group {
+    flex: 1;
+}
+
+.field-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.field-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.field-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+/* Кнопка отправки */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: #5a67d8;
+    transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Прогресс-бар */
+.progress-wrapper {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+}
+
+.progress-text {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.progress-bar-container {
+    background: #e0e0e0;
+    border-radius: 5px;
+    height: 6px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    width: 0%;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Обязательное поле */
+.required {
+    color: #e74c3c;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .form-card {
+        padding: 20px;
+    }
+    
+    .field-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .form-title {
+        font-size: 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для валидации */
+.field-group {
+    position: relative;
+}
+
+.field-input.error {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-container {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    border: 1px solid #ff4444;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+}
+
+.modal-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    color: #ff4444;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.modal-message {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.modal-button {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-button:hover {
+    background: #ff6666;
+    transform: scale(1.05);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
