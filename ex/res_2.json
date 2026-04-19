@@ -1,0 +1,91 @@
+{
+  "page": "creative",
+  "total_duration_seconds": 13,
+  "emotion_log": [
+    {
+      "timestamp": "18:59:54.353",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "18:59:55.241",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "18:59:55.695",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "18:59:56.133",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "18:59:56.586",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "18:59:57.049",
+      "page": "creative",
+      "emotion": "surprised"
+    },
+    {
+      "timestamp": "18:59:57.933",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "18:59:58.859",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "18:59:59.800",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "19:00:00.254",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:00:00.698",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:00:01.113",
+      "page": "creative",
+      "emotion": "no_face"
+    },
+    {
+      "timestamp": "19:00:01.506",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:00:02.289",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:00:02.720",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:00:03.163",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:00:03.601",
+      "page": "creative",
+      "emotion": "happy"
+    }
+  ]
+}

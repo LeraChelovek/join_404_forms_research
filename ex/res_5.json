@@ -1,0 +1,61 @@
+{
+  "page": "creative",
+  "total_duration_seconds": 8,
+  "emotion_log": [
+    {
+      "timestamp": "19:20:21.046",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "19:20:21.478",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "19:20:21.904",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "19:20:22.374",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "19:20:23.226",
+      "page": "creative",
+      "emotion": "neutral"
+    },
+    {
+      "timestamp": "19:20:24.011",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:20:24.383",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:20:24.823",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:20:25.230",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:20:26.109",
+      "page": "creative",
+      "emotion": "happy"
+    },
+    {
+      "timestamp": "19:20:26.558",
+      "page": "creative",
+      "emotion": "no_face"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Кинотеатр 1985 — Калибровка взгляда и эмоций</title>
+    <link rel="stylesheet" href="cinema_style.css">
+    <!-- Библиотеки -->
+    <script defer src="face-api.min.js"></script>
+    <script defer src="webgazer.js"></script>
+    <script src="heatmap.min.js"></script>
+</head>
+<body>
+
+<!-- Интерфейс кинотеатра (изначально скрыт) -->
+<div id="cinema-app" class="hidden">
+    <header>
+        <h1>КИНОТЕАТР 1985</h1>
+    </header>
+
+    <!-- ГЛАВНАЯ СТРАНИЦА -->
+    <div id="main-page" class="container">
+        <h2 class="section-title">Сегодня в прокате</h2>
+        <div class="grid">
+            <div class="card" onclick="openMovie('Назад в будущее', 'formal')">
+                <img src="images/back_to_future.jpg" alt="Назад в будущее">
+                <div class="card-content">
+                    <h3>Назад в будущее</h3>
+                    <button class="btn">Купить билет</button>
+                </div>
+            </div>
+            <div class="card" onclick="openMovie('Титаник', 'creative')">
+                <img src="images/titanic.jpg" alt="Титаник">
+                <div class="card-content">
+                    <h3>Титаник</h3>
+                    <button class="btn">Купить билет</button>
+                </div>
+            </div>
+            <div class="card" onclick="openMovie('Люди в чёрном', 'creative')">
+                <img src="images/MIB.jpg" alt="Люди в чёрном">
+                <div class="card-content">
+                    <h3>Люди в чёрном</h3>
+                    <button class="btn">Купить билет</button>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Кинобар</h2>
+        <div class="grid">
+            <div class="card food-card">
+                <img src="images/salt_popcorn.jpg" alt="Солёный попкорн">
+                <div class="card-content"><h3>Солёный попкорн</h3></div>
+            </div>
+            <div class="card food-card">
+                <img src="images/caramel_popcorn.jpg" alt="Карамельный попкорн">
+                <div class="card-content"><h3>Карамельный попкорн</h3></div>
+            </div>
+            <div class="card food-card">
+                <img src="images/sugar_popcorn.jpg" alt="Сладкий попкорн">
+                <div class="card-content"><h3>Сладкий попкорн</h3></div>
+            </div>
+            <div class="card food-card">
+                <img src="images/coca_cola.jpg" alt="Coca-cola">
+                <div class="card-content"><h3>Coca-cola</h3></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СТРАНИЦА ДЕТАЛЕЙ ФИЛЬМА -->
+    <div id="movie-detail-page" class="container hidden">
+        <div class="movie-info-box">
+            <h2 id="selected-movie-title"></h2>
+            <p id="selected-movie-desc"></p>
+            <div class="ticket-counter">
+                <button class="btn-mini" onclick="changeTickets(-1)">-</button>
+                <span id="ticket-count">1</span>
+                <button class="btn-mini" onclick="changeTickets(1)">+</button>
+            </div>
+            <p>Итого: <span id="total-price"></span> руб.</p>
+            <button class="btn" id="pay-button">Оплатить онлайн</button>
+            <button class="btn" onclick="showPage('main')">Отмена</button>
+        </div>
+    </div>
+
+    <!-- СТРАНИЦА ФОРМАЛЬНОЙ ОШИБКИ -->
+    <div id="formal-page" class="error-container hidden">
+        <div class="error-box formal">
+            <h1>404</h1>
+            <p>Ошибка доступа к серверу. Транзакция была отклонена.</p>
+            <button class="btn" style="width: auto; background: #333;" onclick="showPage('main')">Вернуться</button>
+        </div>
+    </div>
+
+    <!-- СТРАНИЦА КРЕАТИВНОЙ ОШИБКИ -->
+    <div id="creative-page" class="error-container hidden">
+        <div class="full-screen-bg" style="background-image: url(images/err_creative_404.png);"></div>
+        <div class="error-content-overlay">
+            <button class="btn green-btn" onclick="showPage('main')">Отмотать плёнку</button>
+        </div>
+    </div>
+</div>
+
+<!-- СИСТЕМА КАЛИБРОВКИ -->
+<div class="calibration-overlay" id="calibrationOverlay">
+    <div class="calibration-modal">
+        <h2>🎭 Калибровка системы слежения</h2>
+        <p>Для работы кинотеатра с айтрекингом и эмоциями необходимо пройти калибровку.</p>
+        <p><strong>Инструкция:</strong> нажмите «Начать», разрешите доступ к камере и кликайте на появляющиеся красные точки (каждую по 5 раз).</p>
+        <button onclick="startCalibration()" class="calibration-btn" id="startBtn">Начать калибровку</button>
+        <div id="calibrationStatus" class="calibration-status"></div>
+    </div>
+</div>
+
+<div class="video-monitor-system" id="videoMonitor" style="display: none;">
+    <div class="video-box" id="faceMonitor">
+        <div class="label">FaceAPI — Эмоции</div>
+        <div id="faceValues" class="values">😐 ожидание</div>
+        <div id="faceVideoContainer" style="width:100%; height:100%; background:#000;"></div>
+    </div>
+    <div class="video-box" id="gazeMonitor">
+        <div class="label">WebGazer — Взгляд</div>
+        <div id="gazeValues" class="values">⚙️ калибровка...</div>
+        <div id="webgazerVideoParent" style="width:100%; height:100%;"></div>
+    </div>
+</div>
+
+<script src="cinema_script.js"></script>
+</body>
+</html>
