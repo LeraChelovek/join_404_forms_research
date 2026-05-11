@@ -7,3 +7,6 @@ window.getProgressScenario()
 
 // Переключить режим (сразу видно результат в консоли)
 window.switchProgressScenario()
+
+//проверка формата ошибки
+console.log(localStorage.getItem('currentSessionErrorType'));
