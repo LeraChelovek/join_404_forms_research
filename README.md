@@ -23,12 +23,8 @@ git clone <URL-репозитория>
 Перейдите в папку проекта:
 
 cd <имя-папки-проекта>
-Установите Python-зависимости:
+Установите Python-зависимости
 
-pip install -r requirements.txt
-Запустите локальный сервер:
-
-python -m http.server 8000
 Откройте приложение в браузере:
 
 http://localhost:8000/cinema_index.html
