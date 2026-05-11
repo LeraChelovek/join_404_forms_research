@@ -22,7 +22,7 @@ class GazeRecorder {
             return false;
         }
         
-        // Настраиваем WebGazer (НЕ вызываем begin, только настройки)
+        // Настраиваем WebGazer
         webgazer.setRegression('ridge')
             .showVideo(true)
             .showPredictionPoints(true)
@@ -41,7 +41,6 @@ class GazeRecorder {
                 return Promise.reject('WebGazer не загружен');
             }
             
-            // Только настройка, БЕЗ webgazer.begin()!
             webgazer.setRegression('ridge')
                 .showVideo(true)
                 .showPredictionPoints(true)
@@ -105,7 +104,6 @@ class GazeRecorder {
                     }
                 })
                 .catch(err => {
-                    // Игнорируем ошибки, просто пропускаем точку
                 });
         }, 100); // 100ms = 10Hz
     }

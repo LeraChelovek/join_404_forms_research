@@ -1,0 +1,9 @@
+//для изменения ошибки 
+localStorage.setItem('currentSessionErrorType', 'creative'); // 'formal'
+
+//проверка режима
+window.getProgressScenario()
+// Вернёт "with" (включён) или "without" (выключен)
+
+// Переключить режим (сразу видно результат в консоли)
+window.switchProgressScenario()

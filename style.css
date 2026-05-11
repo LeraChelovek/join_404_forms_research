@@ -202,8 +202,6 @@ body {
     font-weight: 600;
 }
 
-/* ========== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ФОРМЫ ========== */
-
 .form-group {
     margin-bottom: 15px;
 }
@@ -279,7 +277,6 @@ body {
     margin-bottom: 5px;
 }
 
-/* Вопрос с радиокнопками */
 .question-box {
     margin-bottom: 30px;
 }
@@ -438,14 +435,6 @@ body {
 
 /* ========== ПРОГРЕСС-БАР ========== */
 
-.progress-wrapper {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 15px 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
 .progress-text {
     font-size: 14px;
     color: #555;
@@ -469,81 +458,6 @@ body {
     border-radius: 10px;
 }
 
-/* ========== КАЛИБРОВКА 3×3 ========== */
-
-.calibration-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 100;
-}
-
-/* Сетка 3×3 для 9 точек */
-.calibration-grid-9 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    width: 100%;
-    height: 100%;
-    padding: 80px;
-    gap: 40px;
-    box-sizing: border-box;
-}
-
-.calibration-point {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: auto;
-    transition: background 0.1s;
-}
-
-/* 3 цвета для 3 кликов */
-.calibration-point[data-state="0"] { background: #e74c3c; }  /* 0/3 */
-.calibration-point[data-state="1"] { background: #e67e22; }  /* 1/3 */
-.calibration-point[data-state="2"] { background: #f1c40f; }  /* 2/3 */
-.calibration-point[data-state="3"] { background: #2ecc71; cursor: default; opacity: 0.6; }  /* 3/3 */
-
-.calibration-buttons {
-    position: fixed;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    z-index: 200;
-}
-
-.calib-btn {
-    padding: 5px 12px;
-    font-size: 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background: #ddd;
-}
-
-.calib-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
-
-.status {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: #333;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    z-index: 200;
-}
 
 /* ========== СТИЛИ ДЛЯ ЭКСПЕРИМЕНТАЛЬНЫХ ФОРМ ========== */
 
@@ -652,40 +566,6 @@ body {
     cursor: not-allowed;
 }
 
-/* Прогресс-бар */
-.progress-wrapper {
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 12px 15px;
-    margin-bottom: 20px;
-}
-
-.progress-text {
-    font-size: 12px;
-    color: #555;
-    margin-bottom: 6px;
-    text-align: center;
-}
-
-.progress-bar-container {
-    background: #e0e0e0;
-    border-radius: 5px;
-    height: 6px;
-    overflow: hidden;
-}
-
-.progress-bar-fill {
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
-    width: 0%;
-    height: 100%;
-    transition: width 0.3s ease;
-}
-
-/* Обязательное поле */
-.required {
-    color: #e74c3c;
-}
-
 /* Адаптивность */
 @media (max-width: 600px) {
     .form-card {
@@ -713,22 +593,17 @@ body {
     }
 }
 
-/* Стили для валидации */
 .field-group {
     position: relative;
 }
 
 .field-input.error {
-    border-color: #ff4444;
-    background: rgba(255, 68, 68, 0.1);
+    border-color: #ddd; 
+    background: white;  
 }
 
 .error-message {
-    color: #ff4444;
-    font-size: 12px;
-    margin-top: 4px;
-    display: block;
-    animation: fadeIn 0.3s ease;
+    display: none;  
 }
 
 @keyframes fadeIn {

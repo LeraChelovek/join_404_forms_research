@@ -147,7 +147,6 @@ class FormManager {
     saveGazeDataForCurrentForm(form, formIndex) {
         const gazeData = this.gazeRecorder.stopRecordingForForm();
         
-        // ❌ ЗДЕСЬ НЕ БЫЛО КОДА ДЛЯ СОХРАНЕНИЯ ЖАНРА
         
         if (gazeData.length > 0) {
             console.log(`   Первая точка: time=${gazeData[0].time_from_form_ms} мс`);
@@ -240,7 +239,7 @@ class FormManager {
             
             const errorMsg = document.createElement('span');
             errorMsg.className = 'error-message';
-            errorMsg.textContent = '❌ Нельзя использовать цифры и спец.символы';
+            errorMsg.textContent = 'Нельзя использовать цифры и спец.символы';
             input.parentElement.appendChild(errorMsg);
             
             return false;
@@ -386,17 +385,12 @@ class FormManager {
     
     // В form-manager.js, в методе completeExperiment
 completeExperiment() {
-    console.log('✅ Все формы заполнены! Эксперимент завершён.');
+    console.log('Все формы заполнены! Эксперимент завершён.');
     
     // Останавливаем запись взгляда
     this.gazeRecorder.stopRecordingForForm();
     
-    // Переключаем сценарий для следующего участника
-    if (window.switchScenario) {
-        window.switchScenario();
-    }
-    
-    // ✅ Переключаем тип ошибки для следующей сессии
+    // Переключаем тип ошибки для следующей сессии
     if (window.switchSessionErrorType) {
         window.switchSessionErrorType();
     }

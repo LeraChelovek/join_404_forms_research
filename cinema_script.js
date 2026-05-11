@@ -104,8 +104,6 @@ async function ensureWebGazer() {
     }
 }
 
-// В конец cinema_script.js
-
 // Обработчик кнопки "Пройти опрос"
 function initSurveyButton() {
     const surveyBtn = document.getElementById('startSurveyBtn');
@@ -142,7 +140,7 @@ function openMovie(title, errorType) {
     curMoviePrice = movie.price;
     updateTicketUI();
     
-    // ✅ Берём тип из localStorage
+    //  Берём тип из localStorage
     const sessionErrorType = getCurrentSessionErrorType();
     console.log(`🎬 Фильм: ${title}, тип ошибки: ${sessionErrorType}`);
     
@@ -154,7 +152,7 @@ function openMovie(title, errorType) {
     showPage('movie-detail');
 }
 
-// Новая функция для получения следующего типа ошибки
+//  функция для получения следующего типа ошибки
 function getNextErrorType() {
     // Чётное число → formal, нечётное → creative
     const errorType = (errorTypeCounter % 2 === 0) ? 'formal' : 'creative';
@@ -168,7 +166,7 @@ function getNextErrorType() {
     return errorType;
 }
 
-// Функция для сброса счётчика (если нужно)
+// Функция для сброса счётчика 
 function resetErrorTypeCounter() {
     errorTypeCounter = 0;
     localStorage.setItem('errorTypeCounter', 0);
@@ -186,7 +184,7 @@ function updateTicketUI() {
     document.getElementById('total-price').innerText = curTicketCount * curMoviePrice;
 }
 
-// ---------- ФУНКЦИИ ТЕПЛОВОЙ КАРТЫ (рабочие) ----------
+// ---------- ФУНКЦИИ ТЕПЛОВОЙ КАРТЫ  ----------
 function startHeatmapCollection() {
     if (isCollectingHeatmap) return;
     heatmapDataPoints = [];
@@ -296,7 +294,7 @@ function clearHeatmapData() {
     console.log('Данные тепловой карты очищены');
 }
 
-// ---------- НОВЫЕ ФУНКЦИИ ДЛЯ СБОРА ЭМОЦИЙ ----------
+// ----------  ФУНКЦИИ ДЛЯ СБОРА ЭМОЦИЙ ----------
 function startEmotionCollection(pageType) {
     // Останавливаем предыдущий интервал, если есть
     if (emotionCollectionInterval) clearInterval(emotionCollectionInterval);
@@ -589,4 +587,29 @@ window.addEventListener('load', () => {
     }
 });
 
+// ========== УПРАВЛЕНИЕ СЦЕНАРИЕМ ПРОГРЕСС-БАРА (ВРУЧНУЮ) ==========
 
+// Функция для получения текущего сценария прогресс-бара
+function getProgressScenario() {
+    let scenario = localStorage.getItem('currentProgressScenario');
+    if (!scenario || (scenario !== 'with' && scenario !== 'without')) {
+        scenario = 'with';  // по умолчанию прогресс-бар включён
+        localStorage.setItem('currentProgressScenario', scenario);
+    }
+    return scenario;
+}
+
+// Функция для переключения сценария прогресс-бара (вызывается вручную)
+function switchProgressScenario() {
+    let current = getProgressScenario();
+    let newScenario = current === 'with' ? 'without' : 'with';
+    localStorage.setItem('currentProgressScenario', newScenario);
+    console.log(`🔄 Прогресс-бар переключён: ${current === 'with' ? 'ВКЛЮЧЁН' : 'ВЫКЛЮЧЕН'} → ${newScenario === 'with' ? 'ВКЛЮЧЁН' : 'ВЫКЛЮЧЕН'}`);
+    return newScenario;
+}
+
+// Делаем функции глобальными
+window.getProgressScenario = getProgressScenario;
+window.switchProgressScenario = switchProgressScenario;
+
+console.log(`Текущий режим прогресс-бара: ${getProgressScenario() === 'with' ? 'ВКЛЮЧЁН' : 'ВЫКЛЮЧЕН'}`);

@@ -4,7 +4,7 @@
 let myFormManager = null;
 let myGazeRecorder = null;
 
-// Функция для смены типа ошибки (объявляем до использования)
+// Функция для смены типа ошибки 
 function switchSessionErrorType() {
     const newType = currentSessionErrorType === 'formal' ? 'creative' : 'formal';
     currentSessionErrorType = newType;
@@ -95,17 +95,8 @@ async function startMyForms() {
         throw new Error('FormManager не загружен');
     }
     
-    let scenario = localStorage.getItem('my_next_scenario');
-    if (!scenario) {
-        scenario = 'without';
-        localStorage.setItem('my_next_scenario', 'with');
-    } else {
-        scenario = scenario === 'with' ? 'without' : 'with';
-        localStorage.setItem('my_next_scenario', scenario);
-    }
-    console.log(`📋 Сценарий: ${scenario === 'with' ? 'с прогресс-баром' : 'без прогресс-бара'}`);
-    
-    // Получаем ID из localStorage
+    let scenario = window.getProgressScenario ? window.getProgressScenario() : 'with';
+
     const participantData = JSON.parse(localStorage.getItem('participantData') || '{}');
     let participantId = participantData.participantId;
     
@@ -153,7 +144,6 @@ async function startMyForms() {
             container.style.display = 'none';
         }
         
-        // ✅ ПЕРЕКЛЮЧАЕМ ТИП ОШИБКИ ДЛЯ СЛЕДУЮЩЕЙ СЕССИИ
         if (typeof window.switchSessionErrorType === 'function') {
             const newType = window.switchSessionErrorType();
             console.log(`🎭 Тип ошибки переключён на: ${newType}`);
